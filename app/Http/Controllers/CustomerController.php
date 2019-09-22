@@ -34,7 +34,7 @@ class CustomerController extends Controller
     $pdf->save(storage_path().'_filename.pdf');
     // Finally, you can download the file using download function
     Mail::to($email)->send(new EmailReport());
-    
+    return $pdf->download('main.pdf');
 
     }
     /**
