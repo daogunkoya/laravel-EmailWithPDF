@@ -33,6 +33,7 @@
             margin-top:5%;
             margin-left:30%;
             width:100%;
+            display:block;
          }
          input{
              padding:10px;

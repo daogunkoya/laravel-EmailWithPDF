@@ -44,13 +44,13 @@ class LoanController extends Controller
   
     $email = $request->email;;
     $loans = \App\Loan::where('user_id',$request->id)->get();
-
+        $id = $request->id;
     // Send data to the view using loadView function of PDF facade
-    $pdf = PDF::loadView('loan', compact('loans'));
+    $pdf = PDF::loadView('loan', compact('loans','id'));
     // If you want to store the generated pdf to the server then you can use the store function
     $pdf->save(storage_path().'/report.pdf');
     // Finally, you can download the file using download function
-    Mail::to($email)->send(new EmailReport( $loans));
+    Mail::to($email)->send(new EmailReport( $loans,$request->id));
     return $pdf->download('loan.pdf');
         return redirect()->route('customers.index');
     }

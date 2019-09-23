@@ -11,15 +11,17 @@ class EmailReport extends Mailable
 {
     use Queueable, SerializesModels;
     protected $data;
+    protected $id;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($loans)
+    public function __construct($loans,$id)
     {
         //
         $this->data = $loans;
+        $this->id = $id;
     }
 
     /**
@@ -30,9 +32,10 @@ class EmailReport extends Mailable
     public function build()
     {
         $loans = $this->data;
+        $id = $this->id;
         return  $this->from(env('MAIL_FROM_ADDRESS'))
                         ->subject('Requested Report')
-                        ->view('loan',compact('loans'))
+                        ->view('loan',compact('loans','id'))
                         ->attach(storage_path('report.pdf'));
     }
 }

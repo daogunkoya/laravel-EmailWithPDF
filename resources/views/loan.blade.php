@@ -1,9 +1,10 @@
 @extends('layout')
 @section('content')
 
-<h1>{{App\User::whereId($id)->first()->name}}</h1>
-<h1>Payment History</h1>
+
 <!-- <a href="{{ URL::to('/customer/pdf') }}">Email in  PDF</a> -->
+<h1>{{App\User::whereId($id)->first()->name}}</h1><br/>
+<h1>Payment History</h1>
 <p>
 <div class="form-control">
     <form class="form-horizontal" method="POST" action="{{route('loans.store')}}" >
