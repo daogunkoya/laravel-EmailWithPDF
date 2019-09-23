@@ -13,5 +13,6 @@
 
 Route::get('/', 'CustomerController@index');
 Route::resource('customers','CustomerController');
+Route::resource('loans','LoanController');
 
 Route::get('/customer/pdf','CustomerController@export_pdf');

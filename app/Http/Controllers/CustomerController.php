@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Customer;
+use App\User;
 use PDF;
 use App\Mail\EmailReport;
 use Illuminate\Support\Facades\Mail;
@@ -19,7 +19,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::all();
+        $customers = User::all();
         return view('main',compact('customers'));
     }
     public function export_pdf()

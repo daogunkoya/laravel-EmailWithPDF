@@ -16,10 +16,10 @@ class EmailReport extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($loans)
     {
         //
-        $this->data = Customer::all();
+        $this->data = $loans;
     }
 
     /**
@@ -29,9 +29,10 @@ class EmailReport extends Mailable
      */
     public function build()
     {
+        $loans = $this->data;
         return  $this->from(env('MAIL_FROM_ADDRESS'))
                         ->subject('Requested Report')
-                        ->view('main')
-                        ->attach(storage_path('storage.pdf'));
+                        ->view('loan',compact('loans'))
+                        ->attach(storage_path('report.pdf'));
     }
 }
