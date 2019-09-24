@@ -29,6 +29,12 @@ class LoanController extends Controller
         //
     }
 
+    public function loans(Request $reqest,$id){
+        $name = \App\User::where('id',$id)->first()->name;
+        $data = ['name'=>$name,'loans'=>\App\Loan::where('user_id',$id)->get()];
+        return response()->json($data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

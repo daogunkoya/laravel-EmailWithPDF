@@ -37,6 +37,10 @@ class CustomerController extends Controller
     return $pdf->download('main.pdf');
 
     }
+
+    public function members(){
+        return response()->json(\App\User::all());
+    }
     /**
      * Show the form for creating a new resource.
      *

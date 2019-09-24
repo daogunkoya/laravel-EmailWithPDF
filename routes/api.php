@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('members','CustomerController@members');
+Route::get('loans/{user_id}','LoanController@loans');
+Route::post('export','LoanController@store');
